@@ -1,6 +1,6 @@
 <?php
 
-require_once 'models/DatabasePDO.php';
+require_once '../../models/DatabasePDO.php';
 $database = new DatabasePDO();
 $db = $database->getPDO();
 

@@ -1,5 +1,5 @@
 <?php
-
+//Options HTTP Headers
 header("Access-Control-Allow-Origin: *");
 header('Content-Type: application/json');
 header("Access-Control-Allow-Methods: PUT, PATCH, GET, POST, DELETE");
@@ -7,7 +7,6 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
 class DatabasePDO
 {
-
     public function getPDO(){
         $user = "root";
         $pass="";
