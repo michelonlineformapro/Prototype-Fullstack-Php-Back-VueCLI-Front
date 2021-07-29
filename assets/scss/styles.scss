@@ -1,0 +1,143 @@
+/*instalation : https://sass-lang.com/install npm i -g sass + check dans les variables d'environement*/
+/*POUR .SASS OU .SCSS FILEWATCHER PHP ET WEB STORM OU live sass compiler pour Vs Code*/
+
+/*Avec une console : sass source/stylesheets/index.scss build/stylesheets/index.css */
+/*ex: path C:\wamp64\www\jquery\assets\scss> sass --watch styles.scss:styles.css
+*/
+
+@import "enfant";
+
+$rouge: #9e0000;
+$vert: #56724b;
+$bleu: #4b839c;
+$orange: #d58d00;
+$violet: #9e7baa;
+$jaune: #e0cf00;
+$gris: #6d6262;
+$noir: #313131;
+$blanc: #ffffff;
+
+$random-color: rgb(random(255), random(255), random(255));
+
+/*TAILLE POLICE*/
+$grand: 2rem;
+$moyen: 1rem;
+$petit: 0.5rem;
+
+$padding-20: 20px;
+$padding-10: 10px;
+body{
+  color: $rouge;
+  font-size: $moyen;
+}
+
+#para-color-random{
+  color: $random-color;
+  background-color: $vert;
+  padding: $padding-20;
+}
+
+/***********IMBRIQUER LES SELECTEURS*/
+.ul{
+  color: $jaune;
+  font-size: $moyen;
+  list-style-type: none;
+  &:hover{
+    cursor: cell;
+    background-color: $violet;
+  }
+  .li{
+    font-size: $grand;
+    color: $rouge;
+    &:hover{
+      background-color: $orange;
+      cursor: wait;
+    }
+    .a{
+      color: $noir;
+      font-size: $petit;
+      &:hover{
+        font-size: $grand;
+        background-color: $bleu;
+        cursor: all-scroll;
+      }
+    }
+  }
+}
+
+/*HERITAGE*/
+%block-card{
+  border-radius: 10px;
+  border: solid 5px $vert;
+  width: 200px;
+  height: 100px;
+  padding: 20px;
+}
+
+#block1{
+  @extend %block-card;
+  background-color: $rouge;
+  color: $blanc;
+}
+
+#block2{
+  @extend %block-card;
+  background-color: $jaune;
+  color: $vert;
+}
+
+#block3{
+  @extend %block-card;
+  background-color: $violet;
+  color: $bleu;
+}
+
+#block4{
+  @extend %block-card;
+  background-color: $orange;
+  color: $blanc;
+}
+
+/****LES MIXINS****/
+@mixin  blockDeTest($couleurFond: DarkGrey){
+  background-color: $couleurFond;
+  width: 100%;
+  height: 200px;
+  color: $bleu;
+  padding: $padding-10;
+}
+
+@mixin tranform($proprietes){
+  transform: $proprietes;
+}
+
+#test-mixins{
+  @include blockDeTest
+}
+#text2{
+  @include blockDeTest
+}
+
+/*If et else*/
+//If et else
+@mixin test-booleen($test:true){
+  @if $test{
+    background-color: $orange;
+    color: $blanc;
+    font-size: $grand;
+  } @else {
+    background-color: $vert;
+    color: $rouge;
+    font-size: $moyen;
+  }
+}
+
+.bool{
+  @include test-booleen($test:true);
+  .bool & a{
+    @include test-booleen($test:false)
+  }
+}
+
+
+
